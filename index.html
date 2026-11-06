@@ -51,6 +51,7 @@
 <main>
   <!-- Masthead -->
   <section class="masthead" id="accueil">
+    <div class="mast-ghost" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M12 22V9"/><path d="M12 9C9.6 8.6 7.8 6.9 7.4 4.2 9.8 4.6 11.6 6.3 12 9z"/><path d="M12 9c2.4-.4 4.2-2.1 4.6-4.8C14.2 4.6 12.4 6.3 12 9z"/><path d="M12 14c-2.4-.4-4.2-2.1-4.6-4.8C9.8 9.6 11.6 11.3 12 14z"/><path d="M12 14c2.4-.4 4.2-2.1 4.6-4.8-2.4.4-4.2 2.1-4.6 4.8z"/></svg></div>
     <div class="mast-inner">
       <svg class="wheat wheat-lg rise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M12 22V9"/><path d="M12 9C9.6 8.6 7.8 6.9 7.4 4.2 9.8 4.6 11.6 6.3 12 9z"/><path d="M12 9c2.4-.4 4.2-2.1 4.6-4.8C14.2 4.6 12.4 6.3 12 9z"/><path d="M12 14c-2.4-.4-4.2-2.1-4.6-4.8C9.8 9.6 11.6 11.3 12 14z"/><path d="M12 14c2.4-.4 4.2-2.1 4.6-4.8-2.4.4-4.2 2.1-4.6 4.8z"/></svg>
       <h1 class="mast-title rise">Café des<br>Faucheurs</h1>
@@ -64,13 +65,15 @@
         <a class="btn btn-dark" href="#carte" data-i18n="ctaMenu">Voir la carte</a>
         <a class="btn btn-line" href="tel:+41329641100" data-i18n="ctaReserve">Appeler pour réserver</a>
       </div>
-      <figure class="photo-frame rise">
-        <img src="assets/hero-terrace.webp" alt="Terrasse fleurie d’un restaurant dans une ruelle de vieille ville en pierre" width="1920" height="1280" fetchpriority="high">
+      <div class="frame-wrap rise">
+      <figure class="photo-frame">
+        <span class="frame-media"><img src="assets/hero-terrace.webp" alt="Terrasse fleurie d’un restaurant dans une ruelle de vieille ville en pierre" width="1920" height="1280" fetchpriority="high"></span>
         <figcaption class="stamp" aria-label="Note Google : 4,8 avec 104 avis">
           <span class="stamp-score"><span data-i18n="stampScore">4,8</span> <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17l-5.7 3 1.2-6.3L2.8 9.3l6.4-.8z"/></svg></span>
           <span class="stamp-text" data-i18n="stampText">104 avis Google</span>
         </figcaption>
       </figure>
+      </div>
     </div>
   </section>
 
@@ -98,7 +101,7 @@
       <h2 class="sec-title" data-i18n="menuTitle">La carte</h2>
       <p class="sec-sub" data-i18n="menuSub">Une carte courte, composée avec les produits du moment. Le midi est le cœur de la maison : un plat du jour, quelques plats bien faits, et des desserts maison.</p>
     </div>
-    <div class="carte reveal">
+    <div class="carte reveal tilt-in">
       <div class="carte-cat">
         <h3 class="cat-title"><span data-i18n="catMidi">Le midi</span></h3>
         <div class="dish">
@@ -199,7 +202,7 @@
         <p data-i18n="storyP2">Le midi, la cuisine compose ses menus avec des produits frais de la région : un plat du jour, une courte carte, et des classiques préparés maison, des cuisses de grenouilles au roastbeef. Les desserts, eux aussi, sont faits maison.</p>
         <p data-i18n="storyP3">Aux beaux jours, la terrasse fleurie offre un coin de calme dans les ruelles de la vieille ville, à deux pas du damier des rues de la ville horlogère, classée au patrimoine mondial de l’UNESCO.</p>
       </div>
-      <dl class="register reveal">
+      <dl class="register reveal tilt-in">
         <div><dt data-i18n="regAddrL">Adresse</dt><dd>Rue des Granges 5, 2300 La Chaux-de-Fonds</dd></div>
         <div><dt data-i18n="regAreaL">Quartier</dt><dd data-i18n="regArea">Vieille ville</dd></div>
         <div><dt data-i18n="regStyleL">Style</dt><dd data-i18n="regStyle">Restaurant familial et traditionnel</dd></div>
@@ -236,7 +239,8 @@
 
   <!-- Réserver -->
   <section class="reserver" id="reserver">
-    <div class="res-inner reveal">
+    <div class="res-ghost" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M12 22V9"/><path d="M12 9C9.6 8.6 7.8 6.9 7.4 4.2 9.8 4.6 11.6 6.3 12 9z"/><path d="M12 9c2.4-.4 4.2-2.1 4.6-4.8C14.2 4.6 12.4 6.3 12 9z"/><path d="M12 14c-2.4-.4-4.2-2.1-4.6-4.8C9.8 9.6 11.6 11.3 12 14z"/><path d="M12 14c2.4-.4 4.2-2.1 4.6-4.8-2.4.4-4.2 2.1-4.6 4.8z"/></svg></div>
+    <div class="res-inner reveal tilt-in">
       <h2 class="res-title" data-i18n="bookTitle">Réserver votre table</h2>
       <p class="res-sub" data-i18n="bookSub">Ici, la réservation se fait par téléphone, simplement.</p>
       <ol class="steps">
@@ -257,19 +261,19 @@
       <h2 class="sec-title" data-i18n="visitTitle">Nous trouver</h2>
     </div>
     <div class="visit-grid">
-      <article class="vcard reveal">
+      <article class="vcard reveal tilt-in">
         <h3 data-i18n="vAddrTitle">Adresse et contact</h3>
         <p class="vaddr">Café des Faucheurs<br>Rue des Granges 5<br>2300 La Chaux-de-Fonds</p>
         <p><a class="vlink" href="tel:+41329641100">032 964 11 00</a></p>
         <p><a class="vlink" href="https://www.facebook.com/cafedesfaucheurs" target="_blank" rel="noopener" data-i18n="vFb">Notre page Facebook</a></p>
         <a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&amp;query=Caf%C3%A9+des+Faucheurs+Rue+des+Granges+5+2300+La+Chaux-de-Fonds" target="_blank" rel="noopener" data-i18n="vDir">Itinéraire</a>
       </article>
-      <article class="vcard reveal">
+      <article class="vcard reveal tilt-in">
         <h3 data-i18n="vHoursTitle">Horaires</h3>
         <p data-i18n="vHoursText">Les horaires de la maison ne sont pas publiés de façon fiable en ligne : ils seront affichés ici dès qu’ils seront confirmés. Pour connaître les heures du jour, appelez-nous.</p>
         <a class="btn btn-poppy" href="tel:+41329641100" data-i18n="vHoursCta">Demander les horaires</a>
       </article>
-      <article class="vcard reveal">
+      <article class="vcard reveal tilt-in">
         <h3 data-i18n="vAreaTitle">La vieille ville</h3>
         <p data-i18n="vAreaText">La maison se trouve rue des Granges, dans la vieille ville de La Chaux-de-Fonds, la ville horlogère classée au patrimoine mondial de l’UNESCO avec Le Locle.</p>
         <a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&amp;query=Caf%C3%A9+des+Faucheurs+Rue+des+Granges+5+2300+La+Chaux-de-Fonds" target="_blank" rel="noopener" data-i18n="vDir2">Ouvrir dans Google Maps</a>

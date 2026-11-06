@@ -290,4 +290,74 @@
       }, 300);
     }, 3200);
   }
+
+  /* ---------- Paper-depth engine (elevation 2026-11-06) ----------
+     Scroll parallax planes + desktop pointer tilt. Transform/opacity
+     only, driven through CSS vars so no-JS and reduced-motion stay
+     perfectly flat. Rates are small on purpose: paper, not a ride. */
+  if (!reducedMotion) {
+    var amp = window.innerWidth < 640 ? 0.55 : 1;
+    var masthead = document.querySelector(".masthead");
+    var heroImg = document.querySelector(".photo-frame img");
+    var stampEl = document.querySelector(".stamp");
+    var frameEl = document.querySelector(".photo-frame");
+    var ghosts = document.querySelectorAll(".mast-ghost, .res-ghost");
+
+    function planeProgress(el) {
+      var r = el.getBoundingClientRect();
+      var vh = window.innerHeight || 800;
+      if (r.bottom < -120 || r.top > vh + 120) return null;
+      var c = r.top + r.height / 2;
+      var p = (vh / 2 - c) / (vh / 2);
+      return Math.max(-1, Math.min(1, p));
+    }
+
+    var ticking = false;
+    function updatePlanes() {
+      ticking = false;
+      if (masthead && heroImg) {
+        var p = planeProgress(masthead);
+        if (p !== null) {
+          heroImg.style.setProperty("--hero-par", (p * -22 * amp).toFixed(1) + "px");
+          if (stampEl) stampEl.style.setProperty("--stamp-y", (p * 9 * amp).toFixed(1) + "px");
+        }
+      }
+      for (var g = 0; g < ghosts.length; g++) {
+        var gp = planeProgress(ghosts[g].parentElement || ghosts[g]);
+        if (gp !== null) ghosts[g].style.setProperty("--ghost-y", (gp * 30 * amp).toFixed(1) + "px");
+      }
+    }
+    function requestPlanes() {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(updatePlanes); }
+    }
+    window.addEventListener("scroll", requestPlanes, { passive: true });
+    window.addEventListener("resize", function () {
+      amp = window.innerWidth < 640 ? 0.55 : 1;
+      requestPlanes();
+    }, { passive: true });
+    updatePlanes();
+
+    /* Pointer tilt: fine pointers only, small angles, springs back
+       through the CSS transition when the pointer leaves. */
+    var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (finePointer) {
+      function attachTilt(el, rxVar, ryVar, maxDeg) {
+        if (!el) return;
+        el.addEventListener("pointermove", function (ev) {
+          var r = el.getBoundingClientRect();
+          var x = (ev.clientX - r.left) / r.width - 0.5;
+          var y = (ev.clientY - r.top) / r.height - 0.5;
+          el.style.setProperty(ryVar, (x * maxDeg).toFixed(2) + "deg");
+          el.style.setProperty(rxVar, (-y * maxDeg).toFixed(2) + "deg");
+        });
+        el.addEventListener("pointerleave", function () {
+          el.style.setProperty(ryVar, "0deg");
+          el.style.setProperty(rxVar, "0deg");
+        });
+      }
+      attachTilt(frameEl, "--frx", "--fry", 3.4);
+      var shots = document.querySelectorAll(".shot");
+      for (var s = 0; s < shots.length; s++) attachTilt(shots[s], "--srx", "--sry", 5);
+    }
+  }
 })();
